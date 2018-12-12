@@ -1,0 +1,290 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <string.h>
+        -:    3:#include <stdlib.h>
+        -:    4:#include <time.h>
+        -:    5:
+        -:    6:
+        -:    7:#define LONG_TIME (0xffffffff/8)
+        -:    8:#define noop (void)0
+        -:    9:
+function branch1 called 1692913 returned 100% blocks executed 100%
+  1692913:   10:void branch1() {
+        -:   11:    /*
+        -:   12:    for (int i = 0; i < (LONG_TIME * 2); i++) {
+        -:   13:        // Prevent the compiler from optimizing out empty loop
+        -:   14:        noop;
+        -:   15:    }
+        -:   16:    */
+        -:   17:    noop;
+  1692913:   18:    return;
+        -:   19:}
+function branch2 called 846997 returned 100% blocks executed 100%
+   846997:   20:void branch2() {
+        -:   21:    /*
+        -:   22:    for (int i = 0; i < (LONG_TIME * 2); i++) {
+        -:   23:        // Prevent the compiler from optimizing out empty loop
+        -:   24:        noop;
+        -:   25:    }
+        -:   26:    */
+        -:   27:    noop;
+   846997:   28:    return;
+        -:   29:}
+function branch3 called 423554 returned 100% blocks executed 100%
+   423554:   30:void branch3() {
+        -:   31:    /*
+        -:   32:    for (int i = 0; i < (LONG_TIME * 2); i++) {
+        -:   33:        // Prevent the compiler from optimizing out empty loop
+        -:   34:        noop;
+        -:   35:    }
+        -:   36:    */
+        -:   37:    noop;
+   423554:   38:    return;
+        -:   39:}
+function branch4 called 3812193 returned 100% blocks executed 100%
+  3812193:   40:void branch4() {
+        -:   41:    /*
+        -:   42:    for (int i = 0; i < (LONG_TIME * 2); i++) {
+        -:   43:        // Prevent the compiler from optimizing out empty loop
+        -:   44:        noop;
+        -:   45:    }
+        -:   46:    */
+        -:   47:    noop;
+  3812193:   48:    return;
+        -:   49:}
+function branchAlways called 4194303 returned 100% blocks executed 100%
+  4194303:   50:void branchAlways() {
+        -:   51:    /*
+        -:   52:    for (int i = 0; i < (LONG_TIME * 2); i++) {
+        -:   53:        // Prevent the compiler from optimizing out empty loop
+        -:   54:        noop;
+        -:   55:    }
+        -:   56:    */
+        -:   57:    noop;
+  4194303:   58:    return;
+        -:   59:}
+function branchNever called 0 returned 0% blocks executed 0%
+    #####:   60:void branchNever() {
+        -:   61:    /*
+        -:   62:    for (int i = 0; i < (LONG_TIME * 2); i++) {
+        -:   63:        // Prevent the compiler from optimizing out empty loop
+        -:   64:        noop;
+        -:   65:    }
+        -:   66:    */    
+        -:   67:    noop;
+    #####:   68:    return;
+        -:   69:}
+        -:   70:
+function main called 1 returned 100% blocks executed 91%
+        1:   71:int main(int argc, char **argv) {
+        1:   72:    argc = 5;
+        1:   73:    if (argc != 5) {
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   74:        printf("Wrong number of args\n");
+call    0 never executed
+    #####:   75:        exit(1);
+call    0 never executed
+        -:   76:    }
+        1:   77:    printf("\n Inside main()\n");
+call    0 returned 100%
+        1:   78:    srand(time(NULL));
+call    0 returned 100%
+call    1 returned 100%
+        -:   79:
+        -:   80:
+        1:   81:    double a = 40;
+        1:   82:    double b = 20;
+        1:   83:    double c = 10;
+        1:   84:    double d = 90;
+        -:   85:    /*
+        -:   86:    double a = atoi(argv[1]);
+        -:   87:    double b = atoi(argv[2]);
+        -:   88:    double c = atoi(argv[3]);
+        -:   89:    double d = atoi(argv[4]);
+        -:   90:    */
+        -:   91:    int random;
+        -:   92:    /*
+        -:   93:    a = a / 100;
+        -:   94:    b = b / 100;
+        -:   95:    c = c / 100;
+        -:   96:    d = d / 100;
+        -:   97:    */
+        -:   98:    
+        1:   99:    double always = 100;
+        1:  100:    double never = 0;
+        1:  101:    double i = 0;
+        -:  102:
+        1:  103:    double count1 = 0;
+        1:  104:    double count2 = 0;
+        1:  105:    double count3 = 0;
+        1:  106:    double count4 = 0;
+        1:  107:    double countAlways = 0;
+        1:  108:    double countNever = 0;
+        1:  109:    int small_time = (((((((LONG_TIME / 2) / 2) / 2) / 2) / 2) / 2) / 2);
+        1:  110:    printf(" %lf percent chance for branch A\n %lf percent chance for branch B\n %lf percent chance for branch C\n %lf percent chance for branch D\n", a, b, c, d);
+call    0 returned 100%
+  4194304:  111:    for (i = 0; i < small_time; i++) {
+branch  0 taken 99%
+branch  1 taken 1% (fallthrough)
+  4194303:  112:        random = rand() % 99 + 1;
+call    0 returned 100%
+  4194303:  113:        if (random <= a) {
+branch  0 taken 40% (fallthrough)
+branch  1 taken 60%
+  1692913:  114:            branch1();
+call    0 returned 100%
+  1692913:  115:            count1++;
+        -:  116:        }
+  4194303:  117:        if (random <= b) {
+branch  0 taken 20% (fallthrough)
+branch  1 taken 80%
+   846997:  118:            branch2();
+call    0 returned 100%
+   846997:  119:            count2++;
+        -:  120:        }
+  4194303:  121:        if (random <= c) {
+branch  0 taken 10% (fallthrough)
+branch  1 taken 90%
+   423554:  122:            branch3();
+call    0 returned 100%
+   423554:  123:            count3++;
+        -:  124:        }
+  4194303:  125:        if (random <= d) {
+branch  0 taken 91% (fallthrough)
+branch  1 taken 9%
+  3812193:  126:            branch4();
+call    0 returned 100%
+  3812193:  127:            count4++;
+        -:  128:        }
+  4194303:  129:        if (random < always) {
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+  4194303:  130:            branchAlways();
+call    0 returned 100%
+  4194303:  131:            countAlways++;
+        -:  132:        }
+  4194303:  133:        if (random < never) {
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:  134:            branchNever();
+call    0 never executed
+    #####:  135:            countNever++;
+        -:  136:        }
+        -:  137:    }
+        -:  138:
+        1:  139:    printf("%d possible times branch could be taken\n", (int)i);
+call    0 returned 100%
+        -:  140:    double aPercent, bPercent, cPercent, dPercent, alwaysPercent, neverPercent;
+        1:  141:    aPercent = (count1/i) * 100;
+        1:  142:    bPercent = (count2/i) * 100;
+        1:  143:    cPercent = (count3/i) * 100;
+        1:  144:    dPercent = (count4/i) * 100;
+        1:  145:    alwaysPercent = ((double)(countAlways/i)) * 100;
+        1:  146:    neverPercent = ((double)(countNever/i)) * 100;
+        1:  147:    printf("Branch A was taken %d times\n", (int)count1);
+call    0 returned 100%
+        1:  148:    printf("Branch A was taken %lf percent\n", aPercent);
+call    0 returned 100%
+        -:  149:
+        1:  150:    printf("Branch B was taken %d times\n", (int)count2);
+call    0 returned 100%
+        1:  151:    printf("Branch B was taken %lf percent\n", bPercent);
+call    0 returned 100%
+        -:  152:
+        1:  153:    printf("Branch C was taken %d times\n", (int)count3);
+call    0 returned 100%
+        1:  154:    printf("Branch C was taken %lf percent\n", cPercent);
+call    0 returned 100%
+        -:  155:
+        1:  156:    printf("Branch D was taken %d times\n", (int)count4);
+call    0 returned 100%
+        1:  157:    printf("Branch D was taken %lf percent\n", dPercent);
+call    0 returned 100%
+        -:  158:
+        1:  159:    printf("Branch Always was taken %d times\n", (int)countAlways);
+call    0 returned 100%
+        1:  160:    printf("Branch Always was taken %lf percent\n", alwaysPercent);
+call    0 returned 100%
+        -:  161:
+        1:  162:    printf("Branch Never was taken %d times\n", (int)countNever);
+call    0 returned 100%
+        1:  163:    printf("Branch Never was taken %lf percent\n", neverPercent);
+call    0 returned 100%
+        -:  164:
+        1:  165:    printf("\n Exiting \n");
+call    0 returned 100%
+        1:  166:    return 0;
+        -:  167:}
+        -:  168:
+        -:  169:
+        -:  170:
+        -:  171:/*
+        -:  172:void child1(void) {
+        -:  173:	printf("\n     Inside child1()\n");
+        -:  174:	int i = 0;
+        -:  175:
+        -:  176:	for( ; i < (LONG_TIME * 2); i++) {
+        -:  177:		// Prevent the compiler from optimizing out empty loop
+        -:  178:		asm("nop;");
+        -:  179:	}
+        -:  180:
+        -:  181:	return;
+        -:  182:}
+        -:  183:
+        -:  184:void child2(void) {
+        -:  185:	int i = 0;
+        -:  186:
+        -:  187:	for( ; i < 16; i++) {
+        -:  188:		// Prevent the compiler from optimizing out empty loop
+        -:  189:		asm("nop;");
+        -:  190:	}
+        -:  191:
+        -:  192:	return;
+        -:  193:}
+        -:  194:
+        -:  195:void parent(void) {
+        -:  196:	printf("\n   Inside parent \n");
+        -:  197:	int i = 0;
+        -:  198:
+        -:  199:	for (i=0 ; i < (LONG_TIME); i++) {
+        -:  200:		// Prevent the compiler from optimizing out empty loop
+        -:  201:		asm("nop;");
+        -:  202:	}
+        -:  203:	child1();
+        -:  204:
+        -:  205:	printf("\n     Starting child2() loop\n");
+        -:  206:	for (i=0 ; i < (LONG_TIME/2); i++) {
+        -:  207:		child2();
+        -:  208:	}
+        -:  209:
+        -:  210:	return;
+        -:  211:}
+        -:  212:
+        -:  213:static void no_children(void) {
+        -:  214:	printf("\n   Inside no_children \n");
+        -:  215:	int i = 0;
+        -:  216:
+        -:  217:	for (i=0; i < (LONG_TIME * 5); i++) {
+        -:  218:		// Prevent the compiler from optimizing out empty loop
+        -:  219:		asm("nop;");
+        -:  220:	}
+        -:  221:
+        -:  222:	return;
+        -:  223:}
+        -:  224:
+        -:  225:int main(int argc, char **argv) {
+        -:  226:	printf("\n Inside main()\n");
+        -:  227:	int i = 0;
+        -:  228:
+        -:  229:	parent();
+        -:  230:	no_children();
+        -:  231:
+        -:  232:	printf("\n Exiting \n");
+        -:  233:	return 0;
+        -:  234:}
+        -:  235:*/
